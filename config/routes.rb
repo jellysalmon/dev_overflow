@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   resources :questions do
     post 'upvote', on: :member
     post 'downvote', on: :member
-    resources :answers do
-      post 'upvote', on: :member
-    end
   end
+  resources :answers do
+    post 'upvote', on: :member
+    post 'downvote', on: :member
+  end
+  
 
 
 

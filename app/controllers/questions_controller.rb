@@ -11,13 +11,20 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-
-
   end
+
+  def form
+    @question = Question.new
+  end
+
 
   def create
     @question = Question.create(question_params)
-    redirect_to questions_path
+    respond_to do |format|
+      format.html {redirect_to @question}
+      format.js
+    end
+    
   end
 
   def destroy
@@ -52,7 +59,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render json: @question}
+      # format.json {render json: @question}
       format.js
     end
 
@@ -62,14 +69,9 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.downvote
 
-    # if request.xhr?
-    #   content_type :json
-    #   return @question.id.to_json
-    # end
-
     respond_to do |format|
       format.html
-      format.json {render json: @question}
+      # format.json {render json: @question}
       format.js
     end
 

@@ -7,23 +7,12 @@
 
   <%= link_to("Edit", edit_question_path) %>
 </p>
-<%= form_for [@question, @question.answers.build] do |f| %>
-  <%= f.label :title %>:
-  <%= f.text_field :title %>
 
-  <%= f.label :content %>:
-  <%= f.text_field :content %>
+<h3> Post an Answer</h3>
+<%= render "answer_form" %>
 
-  <%= f.submit %>
-<% end %>
-
-<ul>
-  <% @answers.each do |answer| %>
-  <li>
-    <%= answer.title %>
-  </li>
-  <p><%= answer.content %></p>
-  <% end %>
+<ul> 
+  <li> <%= render @question.answers %> </li>
 </ul>
 
 

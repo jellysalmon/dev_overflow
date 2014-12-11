@@ -1,0 +1,8 @@
+<li>Votes: <span id="<%="#{answer.id}"%>-votecount"><%=answer.votecount%></span> - <%="#{answer.title}"%>
+      <%= link_to (upvote_answer_path(answer)), :id => "answer-upvote", remote: true, method: :post do %>
+        <i class="fa fa-paper-plane"></i>
+      <% end %>
+      <%= link_to (downvote_answer_path(answer)), :id => "answer-downvote", remote: true, method: :post do %>
+         <i class="fa fa-wheelchair"></i>
+<% end %>
+</li>

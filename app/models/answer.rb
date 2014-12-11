@@ -9,7 +9,11 @@ class Answer < ActiveRecord::Base
   end
 
   def downvote
-    self.vote.last.destroy
+    self.votes.last.destroy
+  end
+
+  def votecount
+    self.votes.count
   end
 
 end
